@@ -1,7 +1,15 @@
+//формат таймера в хх:хх
+function format_timer(total) {
+    console.log("ololo");
+    var minutes = Math.trunc(total / 60);
+    var seconds = Math.trunc(total % 60);
+    return format(minutes) + ":" + format(seconds);
+};
+
 //базовые данные
-var left_score = 0;
+var left_score = 5;
 var right_score = 0;
-var countdown = 120;
+var countdown = 130;
 var double_hits = 0;
 var is_running = false;
 
@@ -17,7 +25,7 @@ window.onload = function() {
 window.setInterval(function() {
     document.getElementById("left_score").innerHTML = left_score;
     document.getElementById("right_score").innerHTML = right_score;
-    document.getElementById("timer").innerHTML = countdown;
+    document.getElementById("timer").innerHTML = format_timer(countdown);
 }, 100);
 
 
@@ -70,17 +78,11 @@ var timer = setInterval(function(){
             is_running = false;
             alert("Fight is over")
         };
-        //document.getElementById('countdown').innerHTML = countdown;
         set_data("countdown", countdown);
     }
 }, 1000);
 
-//формат таймера в хх:хх
-// function format_timer(total) {
-//     var minutes = Math.trunc(total / 60);
-//     var seconds = Math.trunc(total % 60);
-//     return format(minutes) + ":" + format(seconds);
-// };
+
 
 
 
