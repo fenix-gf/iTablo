@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Controls</title>
+    <title>Пульт</title>
     <link rel="stylesheet" href="staff/controls.css">
 </head>
 <body>
-    <h1>Controls</h1>
+    <h3>Пульт</h3>
 
-    <h3 id="left_score"></h3>
-    <button id="add_left" onclick=manage_left_score(1)>+ left</button>
-    <button id="remove_left" onclick=manage_left_score(0)>- left</button>
+    <h3>Счёт синего:</h3> <h3 id="left_score"></h3>
+    <button id="add_left" onclick=manage_left_score(1)>Плюс синему</button>
+    <button id="remove_left" onclick=manage_left_score(0)>Минус синему</button>
     <br>
 
-    <h3 id="right_score"></h3>
-    <button id="add_right" onclick=manage_right_score(1)>+ right</button>
-    <button id="remove_right" onclick=manage_right_score(0)>- right</button>
-    <br>
+    <h3>Счёт красного:</h3> <h3 id="right_score"></h3>
+    <button id="add_right" onclick=manage_right_score(1)>Плюс красному</button>
+    <button id="remove_right" onclick=manage_right_score(0)>Минус красному</button>
+    <br><br>
 
+    <h3>Таймер</h3>
     <h3 id="timer"></h3>
     <button id="start_timer" onclick="start_stop_timer()">Старт/стоп таймера</button>
-    <br><br>
+    <p>Можно запускать и останавливать таймер по пробелу</p>
+    <br>
 
     <h3>Обоюдные поражения</h3>
     <h3 id="doublehits"></h3>
@@ -30,9 +32,10 @@
     <button onclick="doublehit(-1)">Отнять обоюдку</button>
     <br>
     <button onclick="strike_check()">Обоюдки подряд/не подряд</button>
-    <br>
-
+    <br><br>
     <a href="tablo.html">К табло</a>
+    <br>
+    <p>Что бы сбросить табло просто нажми F5</p>
 
     <script src="staff/controls.js"></script>
 </body>
