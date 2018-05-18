@@ -7,6 +7,12 @@ window.setInterval(function() {
 
     timer = localStorage.getItem("countdown");
     document.getElementById("timer").innerHTML = format_timer(timer);
+
+    doublehits = localStorage.getItem("doublehits");
+    document.getElementById("doublehits").innerHTML = doublehits;
+
+    strike = localStorage.getItem("strike");
+    strike_func(strike);    
 }, 100);
 
 
@@ -24,4 +30,15 @@ function format(val) {
         return val;
 }
 
-
+//обновляем количество статус "страйка"
+function strike_func(x) {
+    if (x == "true") {
+        document.getElementById("strike").classList.remove("strike_hidden");
+        document.getElementById("strike").classList.add("strike");
+        console.log(x + " должен быть тру");
+    } else {
+        document.getElementById("strike").classList.remove("strike");
+        document.getElementById("strike").classList.add("strike_hidden");
+        console.log(x + " должен быть фолс");
+    };
+};

@@ -1,25 +1,28 @@
+//секция по хранилищу
 //базовые данные
 var left_score = 0;
 var right_score = 0;
 var countdown = 120;
-var double_hits = 0;
+var doublehits = 0;
 var is_running = false;
+var strike = false;
 
 //заносим базовые данные в табло
 window.onload = function() {
     localStorage.setItem("left_score", left_score);
     localStorage.setItem("right_score", right_score);
     localStorage.setItem("countdown", countdown);
+    localStorage.setItem("doublehits", doublehits);
+    localStorage.setItem("strike", strike);
 };
-
 
 //настраиваем пульт оператора
 window.setInterval(function() {
     document.getElementById("left_score").innerHTML = format(left_score);
     document.getElementById("right_score").innerHTML = format(right_score);
     document.getElementById("timer").innerHTML = format_timer(countdown);
+    document.getElementById("doublehits").innerHTML = doublehits;
 }, 100);
-
 
 //заносим изменённые данные в хранилище
 set_data = function(key, value) {    
@@ -28,6 +31,8 @@ set_data = function(key, value) {
 };
 
 
+
+//секция про очки
 //добавляем очки левому
 manage_left_score = function(x) {
     if (x == 1) {
@@ -38,7 +43,6 @@ manage_left_score = function(x) {
     set_data("left_score", left_score);
 };
 
-
 //добавляем очки правому
 manage_right_score = function(x) {
     if (x == 1) {
@@ -48,6 +52,7 @@ manage_right_score = function(x) {
     };
     set_data("right_score", right_score);
 };
+
 
 
 //секция про таймер
@@ -75,6 +80,32 @@ var timer = setInterval(function(){
 }, 1000);
 
 
+
+
+//секция про обоюдки
+//добавляем и убавляем обоюдки
+function doublehit(modifier) {
+    doublehits = doublehits + modifier;
+    set_data("doublehits", doublehits);
+    console.log(doublehits);
+}
+
+//обновляем количество статус "страйка"
+function strike_check() {
+    if (strike) {
+        strike = false;
+        document.getElementById("strike").classList.remove("strike");
+        document.getElementById("strike").classList.add("strike_hidden");
+    } else {
+        strike = true;
+        document.getElementById("strike").classList.remove("strike_hidden");
+        document.getElementById("strike").classList.add("strike");
+    };
+    set_data("strike", strike);
+};
+
+
+//вспомогательные функции
 //формат таймера в хх:хх
 function format_timer(total) {
     var minutes = Math.trunc(total / 60);
@@ -89,3 +120,18 @@ function format(val) {
         return val;
 }
 
+//ловим пробел
+
+
+window.addEventListener('keydown',this.check,false);
+
+function check(e) {
+    var code = e.keyCode;
+    switch (code) {  
+        case 32:
+        start_stop_timer();
+          break;
+        default:
+          console.log(code); //Everything else
+    }
+}
