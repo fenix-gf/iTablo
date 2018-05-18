@@ -9,7 +9,7 @@
     <h3>Пульт</h3>
 
     <h3>Счёт синего:</h3> <h3 id="left_score"></h3>
-    <button id="add_left" onclick=manage_left_score(1)>Плюс синему</button>
+    <button id="add_left" onclick=manage_left_score(1),clearSelection()>Плюс синему</button> 
     <button id="remove_left" onclick=manage_left_score(0)>Минус синему</button>
     <br>
 
@@ -21,7 +21,7 @@
     <h3>Таймер</h3>
     <h3 id="timer"></h3>
     <button id="start_timer" onclick="start_stop_timer()">Старт/стоп таймера</button>
-    <p>Можно запускать и останавливать таймер по пробелу</p>
+    <p>Можно запускать и останавливать таймер клавишей "S"</p>
     <br>
 
     <h3>Обоюдные поражения</h3>

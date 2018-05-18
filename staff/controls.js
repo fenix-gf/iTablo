@@ -121,14 +121,12 @@ function format(val) {
 }
 
 //ловим пробел
-
-
 window.addEventListener('keydown',this.check,false);
 
 function check(e) {
     var code = e.keyCode;
     switch (code) {  
-        case 32:
+        case 83:
         start_stop_timer();
           break;
         default:
