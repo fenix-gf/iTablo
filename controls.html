@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controls</title>
+</head>
+<body>
+    <h1>Controls</h1>
+    <h3 id="left_score"></h3>
+    <button id="add_left" onclick=manage_left_score(1)>+ left</button>
+    <button id="remove_left" onclick=manage_left_score(0)>- left</button>
+    <br>
+    <h3 id="right_score"></h3>
+    <button id="add_right" onclick=manage_right_score(1)>+ right</button>
+    <button id="remove_right" onclick=manage_right_score(0)>- right</button>
+    <br>
+    <h3 id="timer"></h3>
+    <button id="start_timer" onclick="start_stop_timer(1)">Старт таймера</button>
+    <button id="stop_timer" onclick="start_stop_timer(0)">Остановка таймера</button>
+
+    <a href="tablo.html">К табло</a>
+
+    <script src="staff/controls.js"></script>
+</body>
+</html>
