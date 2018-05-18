@@ -1,15 +1,7 @@
-//формат таймера в хх:хх
-function format_timer(total) {
-    console.log("ololo");
-    var minutes = Math.trunc(total / 60);
-    var seconds = Math.trunc(total % 60);
-    return format(minutes) + ":" + format(seconds);
-};
-
 //базовые данные
-var left_score = 5;
+var left_score = 0;
 var right_score = 0;
-var countdown = 130;
+var countdown = 120;
 var double_hits = 0;
 var is_running = false;
 
@@ -23,8 +15,8 @@ window.onload = function() {
 
 //настраиваем пульт оператора
 window.setInterval(function() {
-    document.getElementById("left_score").innerHTML = left_score;
-    document.getElementById("right_score").innerHTML = right_score;
+    document.getElementById("left_score").innerHTML = format(left_score);
+    document.getElementById("right_score").innerHTML = format(right_score);
     document.getElementById("timer").innerHTML = format_timer(countdown);
 }, 100);
 
@@ -61,7 +53,7 @@ manage_right_score = function(x) {
 //секция про таймер
 //запуск и остановка таймера
 start_stop_timer = function(x) {
-    if (x == 1) {
+    if (is_running == false) {
         is_running = true;
     } else {
         is_running = false;
@@ -83,45 +75,17 @@ var timer = setInterval(function(){
 }, 1000);
 
 
+//формат таймера в хх:хх
+function format_timer(total) {
+    var minutes = Math.trunc(total / 60);
+    var seconds = Math.trunc(total % 60);
+    return minutes + ":" + format(seconds);
+};
 
+//Формат счёта в два знакоместа
+function format(val) {
+    if (val < 10)
+        val = "0" + val;
+        return val;
+}
 
-
-// //timer start and stop
-// function controls() {
-//     if (is_running == false) {
-//       is_running = true;
-//       console.log("is_running: " + is_running);
-//     } else {
-//       is_running = false;
-//       console.log("is_running: " + is_running);
-//     }
-//   }
-  
-//   //timer increase and decrease
-//   function timeControl(modifier) {
-//     countdown = countdown + modifier;
-//     if (countdown <= 0) {
-//       countdown = 0;
-//     }
-//     document.getElementById('timer').innerHTML = format_timer(countdown);
-//     console.log(countdown);
-//   }
-  
-//   //timer itself
-//   var timer = setInterval(function(){
-//     if (is_running == true) {
-//       countdown--;
-//       if (countdown < 0) {
-//         countdown = 0;
-//         is_running = false;
-//         alert("Fight is over")
-//         }
-//       document.getElementById('timer').innerHTML = format_timer(countdown);
-//       console.log("countdown: " + countdown);
-//       console.log("is_running: " + is_running);
-//     }
-//   }, 1000)
-
-
-
-  
